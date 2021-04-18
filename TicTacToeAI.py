@@ -1,16 +1,49 @@
 # Tic Tac Toe game aganist the computer (AI)
 import random
+choice = ''
+playerLetterChoice = ''
+computerLetterChoice = ''
 
 def playerMove(gameBoard, playerLetter, move):
     gameBoard[move] = playerLetter
 
+def playerschoice():
+    global choice
+    choice = input('heads or tails\n')
+    print(choice)
+
 def firstPlayer():
 # Function: Randomly choose who goes first within the game
-
+    global playerLetterChoice
+    global computerLetterChoice
     if random.randint(0, 1) == 0:
-        return 'computer'
+        print('coin is heads!')
+        check = 'heads'
     else:
-         return 'player'
+        print('coin is tails!')
+        check = 'tails'
+    print(choice)
+    if choice == check:
+        choice1 = input('player or comp\n')
+        if choice1 == 'player':
+            playerLetterChoice = 'X'
+            computerLetterChoice = 'O'
+            return 'player'
+        if choice1 == 'comp':
+            playerLetterChoice = 'O'
+            computerLetterChoice = 'X'
+            return 'computer'
+    else:
+        if random.randint(0, 1) == 0:
+            print('computer chooses player')
+            playerLetterChoice = 'X'
+            computerLetterChoice = 'O'
+            return 'player'
+        else:
+            print('computer chooses computer')
+            playerLetterChoice = 'O'
+            computerLetterChoice = 'X'
+            return 'computer'
 
 def freeSpace(gameBoard, move):
 # Function: Is true if it is a valid game
@@ -43,21 +76,6 @@ def gameWinner(board, letter):
     (board[9] == letter and board[6] == letter and board[3] == letter) or
     (board[7] == letter and board[5] == letter and board[3] == letter) or
     (board[9] == letter and board[5] == letter and board[1] == letter))
-
-def playerChoice():
-# Function: Allows the player to choose what letter they want to be. # Shows the player letter choice and then the computer's choice.
-
-    playerLetter = ''
-
-    while not (playerLetter == 'X' or playerLetter == 'O'):
-        print('Please choose between X or O:?')
-        playerLetter = input().upper()
-
-    if playerLetter == 'X':
-        return ['X', 'O']
-
-    else:
-        return ['O', 'X']
 
 def rematchGame():
 # Function: True for rematch, False if not. Player's choice.
@@ -151,8 +169,7 @@ print('Tic-Tac-Toe against the Computer: Welcome to the game!')
 while True:
 
     tBoard = [' '] * 10
-
-    playerLetterChoice, computerLetterChoice = playerChoice()
+    playerschoice()
     turn = firstPlayer()
     print(turn + ' will go first.')
 
