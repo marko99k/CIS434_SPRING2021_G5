@@ -1,3 +1,12 @@
+#have a coinflip event
+import random
+choice = input("Discuss amongst yourselves who wants heads or tails, then hit enter")
+
+if random.randint(0, 1) == 0:
+    print('coin is heads!')
+else:
+    print('coin is tails!')
+
 arr = [[0]*3 for _ in range(3)]
 win = True
 track = 0
