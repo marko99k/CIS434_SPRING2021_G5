@@ -3,7 +3,7 @@ from functools import *
 from tkinter import messagebox
 
 
-def play():
+def game():
     """Main Menu function for Tic-Tac-Toe in Tkinter"""
     menu = Tk()
     menu.geometry("350x350")
@@ -75,4 +75,4 @@ for i in range(3):
 player = 'X'
 
 if __name__ == '__main__':
-    play()
+    game()
