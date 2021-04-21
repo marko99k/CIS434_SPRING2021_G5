@@ -49,7 +49,7 @@ def gameWinner(board, letter):
             (board[9] == letter and board[5] == letter and board[1] == letter))
 
 
-def get_text(k, j, bgame, layer1, layer2):
+def tText(k, j, bgame, layer1, layer2):
     """Initializing text per click"""
     global symbol
     if board[k][j] == ' ':
@@ -115,7 +115,7 @@ def playBoard(game_board, layer1, layer2):
         for j in range(3):
             n = j
             button[k].append(j)
-            get_t = partial(get_text, k, j, game_board, layer1, layer2)
+            get_t = partial(tText, k, j, game_board, layer1, layer2)
             button[k][j] = Button(game_board, bd=5, command=get_t,
                                   height=4, width=8)
             button[k][j].grid(row=m, column=n)
@@ -128,12 +128,11 @@ def PvP(game_board):
     game_board.destroy()
     game_board = Tk()
     game_board.title("Tic Tac Toe")
-    layer1 = Label(game_board, text="Player 1:", width=10)
-
+    layer1 = Label(game_board, text="Player 1", width=10)
     layer1.grid(row=1, column=1)
-    layer2 = Label(game_board, text="Player 2:",
-                   width=10, state=DISABLED)
 
+    layer2 = Label(game_board, text="Player 2",
+                   width=10, state=DISABLED)
     layer2.grid(row=2, column=1)
     playBoard(game_board, layer1, layer2)
 
@@ -144,10 +143,10 @@ def againstPC(game_board):
     game_board.destroy()
     game_board = Tk()
     game_board.title("Tic Tac Toe")
-    layer1 = Label(game_board, text="Player: ", width=10)
-
+    layer1 = Label(game_board, text="Player", width=10)
     layer1.grid(row=1, column=1)
-    layer2 = Label(game_board, text="Computer: ",
+
+    layer2 = Label(game_board, text="Computer",
                    width=10, state=DISABLED)
     layer2.grid(row=2, column=1)
     playBoard(game_board, layer1, layer2)
